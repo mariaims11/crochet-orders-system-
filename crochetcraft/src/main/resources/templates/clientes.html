@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Finalizar Encomenda</title>
+</head>
+<body>
+
+<h1>Finalizar Encomenda</h1>
+
+<form action="/encomendas" method="post">
+
+  <h3>Dados do Cliente</h3>
+
+  <label>Nome:</label>
+  <input type="text" name="nome" required>
+  <br>
+
+  <label>Email:</label>
+  <input type="email" name="email" required>
+  <br>
+
+  <label>Telefone:</label>
+  <input type="text" name="telefone">
+  <br>
+
+  <label>Morada:</label>
+  <input type="text" name="morada">
+  <br>
+
+  <button type="submit">
+    Confirmar Encomenda
+  </button>
+
+</form>
+
+</body>
+</html>
