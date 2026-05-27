@@ -5,11 +5,21 @@
 </head>
 <body>
 
+<nav>
+  <a href="/">Home</a> |
+  <a href="/produtos">Produtos</a> |
+  <a href="/carrinho">Carrinho</a>
+</nav>
+
+<hr>
+
 <h1>Categorias</h1>
 
 <ul>
   <li th:each="categoria : ${categorias}">
-    <span th:text="${categoria.nome}"></span>
+    <a th:href="@{'/categorias/' + ${categoria.idCategoria}}">
+      <span th:text="${categoria.nome}"></span>
+    </a>
   </li>
 </ul>
 

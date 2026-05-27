@@ -19,7 +19,15 @@ public class ProdutoService {
         return repository.findAll();
     }
 
-    public Produto guardar(Produto produto) {
-        return repository.save(produto);
+    public Produto buscarPorId(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    public List<Produto> listarPorCategoria(Long categoriaId) {
+        return repository.findAll()
+                .stream()
+                .filter(p -> p.getCategoria() != null)
+                .filter(p -> p.getCategoria().getIdCategoria().equals(categoriaId))
+                .toList();
     }
 }

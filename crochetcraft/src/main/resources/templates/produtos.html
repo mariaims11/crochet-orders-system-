@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Catálogo de Produtos</title>
+  <title>Produtos</title>
 </head>
 <body>
 
-<h1>Catálogo</h1>
+<h1>Produtos</h1>
+
+<nav>
+  <a href="/">Home</a> |
+  <a href="/categorias">Categorias</a> |
+  <a href="/carrinho">Carrinho</a>
+</nav>
+
+<hr>
 
 <div th:each="produto : ${produtos}">
 
+  <img
+          th:if="${produto.imagens != null and !produto.imagens.isEmpty()}"
+          th:src="${produto.imagens[0].imagemUrl}"
+          width="250"
+          alt="Imagem do Produto">
+
   <h3 th:text="${produto.nome}"></h3>
 
-  <p th:text="${produto.descricao}"></p>
-
   <p>
-    Preço: <span th:text="${produto.preco}"></span> €
+    Preço:
+    <span th:text="${produto.preco}"></span> €
   </p>
 
-  <p>
-    Categoria: <span th:text="${produto.categoria.nome}"></span>
-  </p>
+  <a th:href="@{'/produtos/' + ${produto.idProduto}}">
+    Ver produto
+  </a>
+
+  <br><br>
+
+  <a th:href="@{'/carrinho/adicionar/' + ${produto.idProduto}}">
+    Adicionar ao carrinho
+  </a>
 
   <hr>
 

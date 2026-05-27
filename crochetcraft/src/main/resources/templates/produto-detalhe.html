@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Produto</title>
+</head>
+<body>
+
+<nav>
+  <a href="/">Home</a> |
+  <a href="/produtos">Produtos</a> |
+  <a href="/carrinho">Carrinho</a>
+</nav>
+
+<hr>
+
+<h1 th:text="${produto.nome}"></h1>
+
+<p th:text="${produto.descricao}"></p>
+
+<p><b>Preço:</b> <span th:text="${produto.preco}"></span> €</p>
+
+<p><b>Stock:</b> <span th:text="${produto.stock}"></span></p>
+
+<p><b>Categoria:</b> <span th:text="${produto.categoria.nome}"></span></p>
+
+<a th:href="@{'/carrinho/adicionar/' + ${produto.idProduto}}">
+  Adicionar ao carrinho
+</a>
+
+</body>
+</html>

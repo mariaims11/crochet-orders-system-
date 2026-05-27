@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Carrinho</title>
+</head>
+<body>
+
+<h1>Carrinho</h1>
+
+<nav>
+  <a href="/">Home</a> |
+  <a href="/produtos">Produtos</a> |
+  <a href="/categorias">Categorias</a>
+</nav>
+
+<hr>
+
+<div th:each="item : ${itens}">
+  <h3 th:text="${item.produto.nome}"></h3>
+
+  <p>Quantidade: <span th:text="${item.quantidade}"></span></p>
+
+  <p>Preço: <span th:text="${item.produto.preco}"></span> €</p>
+
+  <a th:href="@{'/carrinho/remover/' + ${item.produto.idProduto}}">
+    Remover
+  </a>
+
+  <hr>
+</div>
+
+<h2>Total: <span th:text="${total}"></span> €</h2>
+
+<br>
+
+<a href="/carrinho/limpar">Limpar carrinho</a>
+
+<br><br>
+
+<a href="/produtos">Continuar a comprar</a>
+
+</body>
+</html>

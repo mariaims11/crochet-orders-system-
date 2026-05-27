@@ -1,6 +1,7 @@
 package com.crochet.crochetcraft.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "produtos")
@@ -8,6 +9,7 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_produto")
     private Long idProduto;
 
     @Column(nullable = false)
@@ -24,6 +26,9 @@ public class Produto {
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
+
+    @OneToMany(mappedBy = "produto")
+    private List<ImagemProduto> imagens;
 
     public Produto() {
     }
@@ -82,5 +87,13 @@ public class Produto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public List<ImagemProduto> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(List<ImagemProduto> imagens) {
+        this.imagens = imagens;
     }
 }
