@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Finalizar Compra</title>
+</head>
+<body>
+
+<nav>
+  <a href="/">Home</a> |
+  <a href="/produtos">Produtos</a> |
+  <a href="/carrinho">Carrinho</a>
+</nav>
+
+<hr>
+
+<h1>Finalizar Encomenda</h1>
+
+<form action="/encomenda/finalizar" method="post">
+
+  <h3>Dados do Cliente</h3>
+
+  <label>Nome:</label>
+  <input type="text" name="nome" required>
+  <br><br>
+
+  <label>Email:</label>
+  <input type="email" name="email" required>
+  <br><br>
+
+  <label>Telefone:</label>
+  <input type="text" name="telefone">
+  <br><br>
+
+  <label>Morada:</label>
+  <input type="text" name="morada">
+  <br><br>
+
+  <button type="submit">
+    Confirmar Encomenda
+  </button>
+
+</form>
+
+</body>
+</html>
