@@ -1,6 +1,7 @@
 package com.crochet.crochetcraft.controller;
 
 import com.crochet.crochetcraft.model.Cliente;
+import com.crochet.crochetcraft.service.CarrinhoService;
 import com.crochet.crochetcraft.service.ClienteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,30 +11,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class EncomendaController {
 
     private final ClienteService clienteService;
+    private final CarrinhoService carrinhoService;
 
-    public EncomendaController(ClienteService clienteService) {
+    public EncomendaController(
+            ClienteService clienteService,
+            CarrinhoService carrinhoService
+    ) {
         this.clienteService = clienteService;
+        this.carrinhoService = carrinhoService;
     }
 
     @PostMapping("/encomenda/finalizar")
     public String finalizarEncomenda(
+
             @RequestParam String nome,
             @RequestParam String email,
             @RequestParam String telefone,
             @RequestParam String morada
+
     ) {
 
-        // 1. Criar cliente
+        // Criar cliente
         Cliente cliente = new Cliente();
+
         cliente.setNome(nome);
         cliente.setEmail(email);
         cliente.setTelefone(telefone);
         cliente.setMorada(morada);
 
-        // 2. Guardar na base de dados
+        // Guardar cliente
         clienteService.guardar(cliente);
 
-        // 3. Redirecionar
+        // Limpar carrinho
+        carrinhoService.limpar();
+
+        // Página de sucesso
         return "encomenda-sucesso";
     }
 }

@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Fundo da pagina principal */
+.home-page {
+
+    background-image: url('/images/fundohome.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+
+    padding: 20px;
+
+    display: flex;
+    gap: 20px;
+
+    background-color: rgba(255,255,255,0.7);
+}
+
+.navbar a {
+
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+/* Container central */
+.home-container {
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 80vh;
+}
+
+/* Título */
+.titulo {
+    font-size: 100px;
+    font-weight: bold;
+
+    color: #2b2b2b;
+
+    text-align: center;
+
+    background: none;
+
+    padding: 0;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+/* Subtítulo*/
+.subtitulo {
+    margin-top: 30px;
+
+    font-size: 26px;
+
+    color: #2b2b2b;
+
+    background-color: rgba(255,255,255,0.6);
+
+    padding: 10px 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Border título e descrição*/
+.hero-box {
+    background-image: url('/images/label.png');
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    padding: 120px 80px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
