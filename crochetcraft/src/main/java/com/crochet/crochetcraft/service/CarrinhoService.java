@@ -12,7 +12,6 @@ public class CarrinhoService {
 
     private final List<CarrinhoItem> itens = new ArrayList<>();
 
-    // ADICIONAR PRODUTO AO CARRINHO
     public void adicionar(Produto produto) {
 
         for (CarrinhoItem item : itens) {
@@ -25,24 +24,56 @@ public class CarrinhoService {
         itens.add(new CarrinhoItem(produto, 1));
     }
 
-    // VER ITENS
     public List<CarrinhoItem> listar() {
         return itens;
     }
 
-    // REMOVER UM PRODUTO
+    //aumentar ou diminuir quantidades do mesmo produto no carrinho
+    public void aumentar(Long idProduto) {
+
+        for (CarrinhoItem item : itens) {
+
+            if (item.getProduto().getIdProduto().equals(idProduto)) {
+
+                item.setQuantidade(item.getQuantidade() + 1);
+
+                return;
+            }
+        }
+    }
+
+    public void diminuir(Long idProduto) {
+
+        for (CarrinhoItem item : itens) {
+
+            if (item.getProduto().getIdProduto().equals(idProduto)) {
+
+                if (item.getQuantidade() > 1) {
+
+                    item.setQuantidade(item.getQuantidade() - 1);
+
+                } else {
+
+                    remover(idProduto);
+                }
+
+                return;
+            }
+        }
+    }
+
     public void remover(Long idProduto) {
         itens.removeIf(item ->
                 item.getProduto().getIdProduto().equals(idProduto)
         );
     }
 
-    // LIMPAR CARRINHO
+
     public void limpar() {
         itens.clear();
     }
 
-    // CALCULAR TOTAL
+
     public double total() {
         double total = 0;
 

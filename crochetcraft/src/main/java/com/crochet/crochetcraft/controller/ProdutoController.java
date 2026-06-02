@@ -16,8 +16,17 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public String listar(Model model) {
-        model.addAttribute("produtos", service.listarTodos());
+    public String listar(
+            @RequestParam(required = false) String pesquisa,
+            Model model) {
+
+        if (pesquisa != null && !pesquisa.isBlank()) {
+            model.addAttribute("produtos", service.pesquisar(pesquisa));
+        } else {
+            model.addAttribute("produtos", service.listarTodos());
+        }
+
+        model.addAttribute("pesquisa", pesquisa);
         return "produtos";
     }
 

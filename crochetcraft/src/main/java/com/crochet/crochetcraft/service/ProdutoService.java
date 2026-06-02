@@ -30,4 +30,8 @@ public class ProdutoService {
                 .filter(p -> p.getCategoria().getIdCategoria().equals(categoriaId))
                 .toList();
     }
+
+    public List<Produto> pesquisar(String nome) {
+        return repository.findByNomeContainingIgnoreCase(nome);
+    }
 }

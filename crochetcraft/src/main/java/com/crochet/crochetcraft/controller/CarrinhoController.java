@@ -18,7 +18,6 @@ public class CarrinhoController {
         this.produtoService = produtoService;
     }
 
-    // VER CARRINHO
     @GetMapping
     public String verCarrinho(Model model) {
         model.addAttribute("itens", carrinhoService.listar());
@@ -26,7 +25,6 @@ public class CarrinhoController {
         return "carrinho";
     }
 
-    // ADICIONAR PRODUTO AO CARRINHO
     @GetMapping("/adicionar/{id}")
     public String adicionar(@PathVariable Long id) {
         var produto = produtoService.listarTodos()
@@ -42,14 +40,28 @@ public class CarrinhoController {
         return "redirect:/carrinho";
     }
 
-    // REMOVER
+    @GetMapping("/aumentar/{id}")
+    public String aumentar(@PathVariable Long id) {
+
+        carrinhoService.aumentar(id);
+
+        return "redirect:/carrinho";
+    }
+
+    @GetMapping("/diminuir/{id}")
+    public String diminuir(@PathVariable Long id) {
+
+        carrinhoService.diminuir(id);
+
+        return "redirect:/carrinho";
+    }
+
     @GetMapping("/remover/{id}")
     public String remover(@PathVariable Long id) {
         carrinhoService.remover(id);
         return "redirect:/carrinho";
     }
 
-    // LIMPAR
     @GetMapping("/limpar")
     public String limpar() {
         carrinhoService.limpar();

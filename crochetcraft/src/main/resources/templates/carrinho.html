@@ -20,7 +20,19 @@
 
   <h3 th:text="${item.produto.nome}"></h3>
 
-  <p>Quantidade: <span th:text="${item.quantidade}"></span></p>
+  <p>
+
+    <a th:href="@{'/carrinho/diminuir/' + ${item.produto.idProduto}}">
+      -
+    </a>
+
+    <span th:text="${item.quantidade}"></span>
+
+    <a th:href="@{'/carrinho/aumentar/' + ${item.produto.idProduto}}">
+      +
+    </a>
+
+  </p>
 
   <p>Preço: <span th:text="${item.produto.preco}"></span> €</p>
 
