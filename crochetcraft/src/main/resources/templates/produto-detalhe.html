@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Produto</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -16,7 +17,6 @@
 
 <h1 th:text="${produto.nome}"></h1>
 
-<!-- IMAGEM DO PRODUTO -->
 <img
         th:if="${produto.imagens != null and !produto.imagens.isEmpty()}"
         th:src="${produto.imagens[0].imagemUrl}"
@@ -44,6 +44,16 @@
   <b>Categoria:</b>
   <span th:text="${produto.categoria.nome}"></span>
 </p>
+
+<p><b>Cores disponíveis:</b></p>
+
+<div class="cores-container">
+
+  <span th:each="cor : ${#strings.arraySplit(produto.coresDisponiveis, ',')}"
+        th:class="'cor ' + ${cor}">
+  </span>
+
+</div>
 
 <p>
   <b>Personalizável:</b>

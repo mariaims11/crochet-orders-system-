@@ -30,6 +30,9 @@ public class Produto {
     @OneToMany(mappedBy = "produto")
     private List<ImagemProduto> imagens;
 
+    @Column(name = "cores_disponiveis")
+    private String coresDisponiveis;
+
     public Produto() {
     }
 
@@ -95,5 +98,13 @@ public class Produto {
 
     public void setImagens(List<ImagemProduto> imagens) {
         this.imagens = imagens;
+    }
+
+    public String getCoresDisponiveis() {
+        return coresDisponiveis;
+    }
+
+    public void setCoresDisponiveis(String coresDisponiveis) {
+        this.coresDisponiveis = coresDisponiveis;
     }
 }
