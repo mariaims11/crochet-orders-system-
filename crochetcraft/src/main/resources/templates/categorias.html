@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Categorias</title>
-
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body class="home-page">
 
 <nav class="navbar">
@@ -17,15 +17,18 @@
 
 <hr>
 
-<div class="categorias-container">
+<div class="produtos-container">
 
   <a th:each="cat : ${categorias}"
      th:href="@{'/categorias/' + ${cat.idCategoria}}"
-     class="categoria-card">
+     class="produto-card categoria-card">
 
-    <img th:src="${cat.imagemUrl}" alt="Categoria">
+    <img th:src="${cat.imagemUrl}"
+         alt="Categoria"
+         width="250">
 
-    <div class="categoria-nome" th:text="${cat.nome}"></div>
+    <h3 th:text="${cat.nome}"
+        class="categoria-titulo"></h3>
 
   </a>
 

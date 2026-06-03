@@ -25,20 +25,6 @@ CREATE TABLE imagens_produto (
                                  FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
 );
 
-CREATE TABLE cores (
-                       id_cor SERIAL PRIMARY KEY,
-                       nome_cor VARCHAR(50),
-                       codigo_hex VARCHAR(7)
-);
-
-CREATE TABLE produto_cores (
-                               id_produto INT,
-                               id_cor INT,
-                               PRIMARY KEY (id_produto, id_cor),
-                               FOREIGN KEY (id_produto) REFERENCES produtos(id_produto),
-                               FOREIGN KEY (id_cor) REFERENCES cores(id_cor)
-);
-
 CREATE TABLE clientes (
                           id_cliente SERIAL PRIMARY KEY,
                           nome VARCHAR(100),
