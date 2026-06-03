@@ -13,6 +13,9 @@ public class Categoria {
     @Column(nullable = false)
     private String nome;
 
+    @Column(name = "imagem_url")
+    private String imagemUrl;
+
     public Categoria() {
     }
 
@@ -34,5 +37,13 @@ public class Categoria {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
+
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 }
